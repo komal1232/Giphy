@@ -16,6 +16,8 @@ import {
   useColorScheme,
   View,
   TextInput,
+  FlatList,
+  Image
 } from 'react-native';
 
 import {
@@ -26,21 +28,55 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-
+const Item = ({trendingGiphy}) => (
+  <View>
+    <Image
+      style={styles.stretch}
+      source={{
+        uri: trendingGiphy.images.original.url,
+      }}
+    />
+  </View>
+);
 export default function Search(props) {
-  // onChangeText (event)=>{
-  //   console.log("event is",event);
-  // };
-
   const [textToSearch, setTextToSearch] = React.useState('search..');
   const [searchedData, SetSearchedData] = React.useState([]);
+  function onChangeText(event) {
+    console.log('event is', event);
+    fetch(
+      'https://api.giphy.com/v1/gifs/trending?api_key=kYU4UHktwbLZ6kJETdAfB23dgcOyBCLy',
+    )
+      .then(response => {
+        // console.log(response);
+        return response.json();
+      })
+      .then(users => {
+        let array = users.data;
+        return array;
+      })
+      .then(info => {
+        SetSearchedData(info);
+        console.log('trendingGiphy is', searchedData);
+      });
+  }
+
+
+  function renderItem({item}) {
+    //console.log('item with info', item);
+    return <Item trendingGiphy={item} />;
+  }
   return (
     <View style={styles.centered}>
       <TextInput
         style={styles.input}
         placeholder="search here.."
         // value={textToSearch}
-        // onChangeText={onChangeText}
+        onChangeText={onChangeText}
+      />
+      <FlatList
+        data={searchedData}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
       />
     </View>
   );
@@ -72,6 +108,5 @@ const styles = StyleSheet.create({
     margin: 20,
     borderStartWidth: 3,
     padding: 10,
-
   },
 });

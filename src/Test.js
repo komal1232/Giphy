@@ -25,16 +25,37 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import Giphy from './component/Giphy';
+import {useEffect} from 'react';
 
 export default function Test(props) {
+  useEffect(() => {
+    // fetch('https://api.giphy.com/v1/gifs/trending',)
+    //   .then(response => {
+    //     // console.log(response);
+    //     return response.json();
+    //   })
+    //   .then(users => {
+    //     let array = users.data;
+    //     return array;
+    //   })
+    //   .then(info => {
+    //     console.log('data is', info);
+    //   })
+    //   .catch(error => {
+    //     console.log("error is",error);
+    //   });
+  }, []);
+
   return (
     <View style={styles.centered}>
-      <Image
+      {/* <Image
         source={{
           uri: 'https://media4.giphy.com/media/wVtwpCNOk4juVduOte/giphy.gif?cid=151fa2efkrna6e9n57uki4qd1hra1gbfnfw5llnt0khqzxai&rid=giphy.gif'
         }}
         style={styles.tinyLogo}
-      />
+      /> */}
+      <Giphy url="https://media4.giphy.com/media/wVtwpCNOk4juVduOte/giphy.gif?cid=151fa2efkrna6e9n57uki4qd1hra1gbfnfw5llnt0khqzxai&rid=giphy.gif" />
     </View>
   );
 }
