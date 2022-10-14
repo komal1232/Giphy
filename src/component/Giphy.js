@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     // flexDirection: 'column',
     margin: 10,
     borderWidth: 2,
-    borderColor: 'red',
+    borderColor: '#701c3f',
     //justifyContent:'center',
     alignItems:'center',
     borderRadius:20
