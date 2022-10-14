@@ -5,12 +5,14 @@ export default function Giphy(props) {
   return (
     <>
       {/* <View style={styles.stretch}> */}
-      <Image
-        style={styles.stretch}
-        source={{
-          uri: props.url,
-        }}
-      />
+      <View style={styles.container}>
+        <Image
+          style={styles.stretch}
+          source={{
+            uri: props.url,
+          }}
+        />
+      </View>
       {/* </View> */}
     </>
   );
@@ -18,9 +20,13 @@ export default function Giphy(props) {
 
 const styles = StyleSheet.create({
   stretch: {
-    width: 200,
-    height: 200,
-    borderWidth: 0,
-    marginBottom: 0,
+    width: 370,
+    height: 370,
+  },
+  container: {
+   //flex: 2,
+   // flexDirection: 'column',
+    margin: 10,
+    //borderRadius: 10,
   },
 });

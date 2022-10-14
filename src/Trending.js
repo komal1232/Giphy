@@ -21,7 +21,7 @@ const Item = ({trendingGiphy}) => (
 );
 export default function Trending(props) {
   const [trendingGiphy, setTrendingGiphy] = useState([]);
- // const [f, setF] = useState([]);
+  // const [f, setF] = useState([]);
   useEffect(() => {
     // fetch(
     //   'https://api.giphy.com/v1/gifs/trending?api_key=kYU4UHktwbLZ6kJETdAfB23dgcOyBCLy',
@@ -68,12 +68,20 @@ export default function Trending(props) {
   }
   return (
     <SafeAreaView>
-      <FlatList
-        data={trendingGiphy}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        numColumns={2}
-      />
+      <View
+        // style={{
+        //   flex: 1,
+        //   padding: 20,
+        //   flexDirection: "column",
+        // }}>
+        >
+        <FlatList
+          data={trendingGiphy}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          numColumns={2}
+        />
+      </View>
     </SafeAreaView>
   );
 }

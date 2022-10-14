@@ -28,6 +28,9 @@ import Test from './src/Test';
 import Trending from './src/Trending';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
+import Test2 from './src/Test2';
+import Flex2 from './src/Flex2';
+import FlexView from './src/FlexView';
 const Tab = createBottomTabNavigator();
 
 const Section = ({children, title}): Node => {
@@ -74,6 +77,9 @@ const App: () => Node = () => {
           <Tab.Screen name="Search" component={Search} />
           <Tab.Screen name="Test" component={Test} />
           <Tab.Screen name="Trending" component={Trending} />
+          <Tab.Screen name="test2" component={Test2} />
+          <Tab.Screen name="flex" component={Flex2} />
+          <Tab.Screen name="flex-view" component={FlexView}/>
         </Tab.Navigator>
       </NavigationContainer>
       {/* <Test/> */}
