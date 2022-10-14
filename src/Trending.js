@@ -21,40 +21,26 @@ const Item = ({trendingGiphy}) => (
 );
 export default function Trending(props) {
   const [trendingGiphy, setTrendingGiphy] = useState([]);
-  // const [f, setF] = useState([]);
   useEffect(() => {
-    // fetch(
-    //   'https://api.giphy.com/v1/gifs/trending?api_key=kYU4UHktwbLZ6kJETdAfB23dgcOyBCLy',
-    // )
     fetch(
-      'https://api.giphy.com/v1/gifs/trending?api_key=kYU4UHktwbLZ6kJETdAfB23dgcOyBCLy&offset=56',
+      'https://api.giphy.com/v1/gifs/trending?api_key=kYU4UHktwbLZ6kJETdAfB23dgcOyBCLy&offset=56&limit=1000&ratin=r',
       {
         method: 'GET',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
+
       },
     )
       .then(response => {
-        // console.log(response);
         return response.json();
       })
       .then(users => {
-        //  let array = users.data;
-
-        //  return array;
         return users.data;
       })
       .then(info => {
         setTrendingGiphy(info);
-        // let d = [];
-        // let i = 0;
-        // while (i < info.length) {
-        //   d.push(info[i].images.downsized.url);
-        // }
-        // setF(d);
-        // console.log('d is', d);
         console.log('trendingGiphy length is', info.length);
       })
       .catch(error => {
@@ -63,47 +49,33 @@ export default function Trending(props) {
   }, []);
 
   function renderItem({item}) {
-    //console.log('item with info', item);
     return <Item trendingGiphy={item} />;
   }
   return (
-    <SafeAreaView>
-      <View
-        // style={{
-        //   flex: 1,
-        //   padding: 20,
-        //   flexDirection: "column",
-        // }}>
-        >
-        <FlatList
-          data={trendingGiphy}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          numColumns={2}
-        />
-      </View>
-    </SafeAreaView>
+    <>
+      <SafeAreaView>
+        <View
+          style={{
+            //flex: 1,
+            //  padding: 20,
+            //flexDirection: "column",
+            borderRadius: 10,
+            borderWidth: 0.1,
+            justifyContent: 'center',
+            //alignContent:'center',
+          }}>
+          {/* <SafeAreaView> */}
+          <FlatList
+            data={trendingGiphy}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            // numColumns={2}
+          />
+          {/* </SafeAreaView> */}
+        </View>
+      </SafeAreaView>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  centered: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50,
-  },
-  stretch: {
-    width: 200,
-    height: 200,
-    borderWidth: 0,
-    marginBottom: 0,
-  },
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-});
+const styles = StyleSheet.create({});

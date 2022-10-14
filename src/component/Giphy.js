@@ -20,13 +20,17 @@ export default function Giphy(props) {
 
 const styles = StyleSheet.create({
   stretch: {
-    width: 370,
+    width: '50%',
     height: 370,
   },
   container: {
-   //flex: 2,
-   // flexDirection: 'column',
+    //flex: 2,
+    // flexDirection: 'column',
     margin: 10,
-    //borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'red',
+    //justifyContent:'center',
+    alignItems:'center',
+    borderRadius:20
   },
 });

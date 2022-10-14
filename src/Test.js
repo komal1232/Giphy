@@ -77,9 +77,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   centered: {
-    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+
+
+    borderRadius: 10,
+    borderWidth: 0.1,
+    // justifyContent: 'center',
+    // flex:1
+
   },
   tinyLogo: {
     width: 400,
